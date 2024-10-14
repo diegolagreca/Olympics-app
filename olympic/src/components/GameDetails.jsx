@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import Button from './Button';
+import BackButton from './BackButton'; 
 
 const GameDetails = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [game, setGame] = useState(null);
 
   useEffect(() => {
@@ -19,14 +18,13 @@ const GameDetails = () => {
   }, [id]);
 
   return (
-    <div className="container" style={{ marginTop: '2rem', marginLeft: '2rem', marginBottom: '2rem' }}>
+    <div className="container" style={{ marginTop: '2rem', marginLeft: '2rem'}}>
       {game ? (
         <>
-          <Button label="Ir atrás" className="button is-link" onClick={() => navigate(-1)} />
+          <BackButton />
+
           <div className="box">
-
             <h1 className="title is-3">{game.title}</h1>
-
             <div className="content">
               <p className="subtitle is-5"><strong>Descripción:</strong></p>
               <p>{game.description}</p>
@@ -38,7 +36,6 @@ const GameDetails = () => {
               <p>{game.categories}</p>
             </div>
           </div>
-
         </>
       ) : (
         <p>Cargando...</p>
@@ -48,4 +45,3 @@ const GameDetails = () => {
 };
 
 export default GameDetails;
-

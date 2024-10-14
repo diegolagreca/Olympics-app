@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import GameCard from './GameCard';
-import Button from './Button';
+import Button from './Button'; 
 
 const Home = () => {
   const [games, setGames] = useState([]);
@@ -24,7 +24,7 @@ const Home = () => {
   const deleteGame = (id) => {
     axios.delete(`http://localhost:3000/api/games/${id}`)
       .then(() => {
-        fetchGames(); // Actualizar la lista después de borrar
+        fetchGames();
       })
       .catch((error) => {
         console.error("Error deleting game:", error);
@@ -32,8 +32,8 @@ const Home = () => {
   };
 
   return (
-    <div className="container" style={{marginLeft:'2rem' }}>
-      <h1 className="title">Olympics App</h1>
+    <div className="container" style={{ marginLeft: '2rem' }}>
+      <h1 className="title">Gestión de Juegos Olímpicos</h1>
       <Link to="/add-game">
         <Button label="Agregar juego" />
       </Link>
